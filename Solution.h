@@ -15,6 +15,45 @@ using namespace std;
 
 class Solution {
 public:
+    // 28. Implement strStr()
+    // Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+    int strStr(string haystack, string needle) {
+        if (haystack.size() < needle.size())
+            return -1;
+        for (int i = 0; i < haystack.size() - needle.size() + 1; i++){
+            int j;
+            for (j = 0; j < needle.size(); j++) {
+                if (needle[j] != haystack[i + j])
+                    break;
+            }
+            if (j == needle.size()) return i;
+        }
+        return -1;
+    }
+    
+    void strStrTest () {
+        if (strStr ("123123", "123") == 0)
+            cout << "Test case 1 passed" << endl;
+        else{
+            cout << "Test case 1 failed" << endl;
+            cout << "Result of 1 is: " << strStr ("123123", "123") << endl;
+        }
+        
+        if (strStr ("123123", "1234") == -1)
+            cout << "Test case 2 passed" << endl;
+        else{
+            cout << "Test case 2 failed" << endl;
+            cout << "Result of 2 is: " << strStr ("123123", "1234") << endl;
+        }
+        
+        if (strStr ("1231234", "1234") == 3)
+            cout << "Test case 3 passed" << endl;
+        else{
+            cout << "Test case 3 failed" << endl;
+            cout << "Result of 3 is: " << strStr ("1231234", "1234") << endl;
+        }
+    }
+    
     // 38. Count and Say
     // The count-and-say sequence is the sequence of integers beginning as follows:
     // 1, 11, 21, 1211, 111221, ...
