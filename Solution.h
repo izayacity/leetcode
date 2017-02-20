@@ -19,9 +19,61 @@ public:
     // The count-and-say sequence is the sequence of integers beginning as follows:
     // 1, 11, 21, 1211, 111221, ...
     string countAndSay(int n) {
-        string result;
+        string result = "1";
+        if (n == 0) return "";
+        // n = 2
+        while (--n) {
+            string cur = "";
+            for (int i = 0; i < result.size(); i++) {
+                int count = 1;
+                while (i+1 < result.size() && result[i] == result[i+1]) {
+                    count++;
+                    i++;
+                }
+                
+                cur += to_string(count) + result[i];
+            }
+            result = cur;
+        }
         
         return result;
+    }
+    
+    void countAndSayTest () {
+        if (countAndSay(2) == "11")
+            cout << "Test case of input 2 passed" << endl;
+        else{
+            cout << "Test case of input 2 failed" << endl;
+            cout << "Result of 2 is: " << countAndSay(2) << endl;
+        }
+        
+        if (countAndSay(3) == "21")
+            cout << "Test case of input 3 passed" << endl;
+        else{
+            cout << "Test case of input 3 failed" << endl;
+            cout << "Result of 3 is: " << countAndSay(3) << endl;
+        }
+        
+        if (countAndSay(4) == "1211")
+            cout << "Test case of input 4 passed" << endl;
+        else{
+            cout << "Test case of input 4 failed" << endl;
+            cout << "Result of 4 is: " << countAndSay(4) << endl;
+        }
+        
+        if (countAndSay(5) == "111221")
+            cout << "Test case of input 5 passed" << endl;
+        else{
+            cout << "Test case of input 5 failed" << endl;
+            cout << "Result of 5 is: " << countAndSay(5) << endl;
+        }
+        
+        if (countAndSay(6) == "312211")
+            cout << "Test case of input 6 passed" << endl;
+        else{
+            cout << "Test case of input 6 failed" << endl;
+            cout << "Result of 5 is: " << countAndSay(5) << endl;
+        }
     }
     
     // 35. Search Insert Position

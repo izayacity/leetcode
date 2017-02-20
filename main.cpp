@@ -13,6 +13,6 @@
 using namespace std;
 int main(int argc, const char * argv[]) {
     Solution solution;
-    solution.searchInsertTest();
+    solution.countAndSayTest();
     return 0;
 }
