@@ -15,6 +15,33 @@ using namespace std;
 
 class Solution {
 public:
+    // 53. Maximum Subarray
+    /*
+     Find the contiguous subarray within an array (containing at least one number) which has the largest sum.
+     For example, given the array [-2,1,-3,4,-1,2,1,-5,4],
+     the contiguous subarray [4,-1,2,1] has the largest sum = 6.
+    */
+    int maxSubArray(vector<int>& nums) {
+        int result = nums[0], sum = 0;
+        
+        for (int i = 0; i < nums.size(); i++) {
+            sum += nums[i];
+            result = max (result, sum);
+            sum = max (sum, 0);
+        }
+        return result;
+    }
+    
+    void maxSubArrayTest () {
+        vector<int> nums = {-2,1,-3,4,-1,2,1,-5,4};
+        if (maxSubArray(nums) == 6)
+            cout << "Test case 1 passed" << endl;
+        else{
+            cout << "Test case 1 failed" << endl;
+            cout << "Result of 1 is: " << maxSubArray(nums) << endl;
+        }
+    }
+    
     // 28. Implement strStr()
     // Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
     int strStr(string haystack, string needle) {

@@ -13,6 +13,6 @@
 using namespace std;
 int main(int argc, const char * argv[]) {
     Solution solution;
-    solution.strStrTest();
+    solution.maxSubArrayTest();
     return 0;
 }
