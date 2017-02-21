@@ -15,6 +15,71 @@ using namespace std;
 
 class Solution {
 public:
+    // 58. Length of Last Word
+    // Given a string s consists of upper/lower-case alphabets and empty space characters ' ', return the length of last word in the string.
+    // If the last word does not exist, return 0.
+    
+    int lengthOfLastWord(string s) {
+        int result = 0;
+        int tail = (int) s.size() - 1;
+        
+        while (tail >= 0 && s[tail] == ' ')
+            tail--;
+        while (tail >= 0 && s[tail] != ' ') {
+            result++;
+            tail--;
+        }
+        
+        return result;
+    }
+    
+    void lengthOfLastWordTest () {
+        string s = "Hello World";
+        
+        if (lengthOfLastWord(s) == 5)
+            cout << "Test case 1 passed" << endl;
+        else {
+            cout << "Test case 1 failed" << endl;
+            cout << "Result of 1 is: " << lengthOfLastWord(s) << endl;
+        }
+        
+        s = "HelloWorld";
+        
+        if (lengthOfLastWord(s) == 10)
+            cout << "Test case 2 passed" << endl;
+        else {
+            cout << "Test case 2 failed" << endl;
+            cout << "Result of 2 is: " << lengthOfLastWord(s) << endl;
+        }
+        
+        s = "   ";
+        
+        if (lengthOfLastWord(s) == 0)
+            cout << "Test case 3 passed" << endl;
+        else {
+            cout << "Test case 3 failed" << endl;
+            cout << "Result of 3 is: " << lengthOfLastWord(s) << endl;
+        }
+        
+        s = "a   ";
+        
+        if (lengthOfLastWord(s) == 1)
+            cout << "Test case 4 passed" << endl;
+        else {
+            cout << "Test case 4 failed" << endl;
+            cout << "Result of 4 is: " << lengthOfLastWord(s) << endl;
+        }
+        
+        s = " a   ";
+        
+        if (lengthOfLastWord(s) == 1)
+            cout << "Test case 5 passed" << endl;
+        else {
+            cout << "Test case 5 failed" << endl;
+            cout << "Result of 5 is: " << lengthOfLastWord(s) << endl;
+        }
+    }
+    
     // 53. Maximum Subarray
     /*
      Find the contiguous subarray within an array (containing at least one number) which has the largest sum.
@@ -36,7 +101,7 @@ public:
         vector<int> nums = {-2,1,-3,4,-1,2,1,-5,4};
         if (maxSubArray(nums) == 6)
             cout << "Test case 1 passed" << endl;
-        else{
+        else {
             cout << "Test case 1 failed" << endl;
             cout << "Result of 1 is: " << maxSubArray(nums) << endl;
         }
@@ -61,21 +126,21 @@ public:
     void strStrTest () {
         if (strStr ("123123", "123") == 0)
             cout << "Test case 1 passed" << endl;
-        else{
+        else {
             cout << "Test case 1 failed" << endl;
             cout << "Result of 1 is: " << strStr ("123123", "123") << endl;
         }
         
         if (strStr ("123123", "1234") == -1)
             cout << "Test case 2 passed" << endl;
-        else{
+        else {
             cout << "Test case 2 failed" << endl;
             cout << "Result of 2 is: " << strStr ("123123", "1234") << endl;
         }
         
         if (strStr ("1231234", "1234") == 3)
             cout << "Test case 3 passed" << endl;
-        else{
+        else {
             cout << "Test case 3 failed" << endl;
             cout << "Result of 3 is: " << strStr ("1231234", "1234") << endl;
         }
@@ -108,35 +173,35 @@ public:
     void countAndSayTest () {
         if (countAndSay(2) == "11")
             cout << "Test case of input 2 passed" << endl;
-        else{
+        else {
             cout << "Test case of input 2 failed" << endl;
             cout << "Result of 2 is: " << countAndSay(2) << endl;
         }
         
         if (countAndSay(3) == "21")
             cout << "Test case of input 3 passed" << endl;
-        else{
+        else {
             cout << "Test case of input 3 failed" << endl;
             cout << "Result of 3 is: " << countAndSay(3) << endl;
         }
         
         if (countAndSay(4) == "1211")
             cout << "Test case of input 4 passed" << endl;
-        else{
+        else {
             cout << "Test case of input 4 failed" << endl;
             cout << "Result of 4 is: " << countAndSay(4) << endl;
         }
         
         if (countAndSay(5) == "111221")
             cout << "Test case of input 5 passed" << endl;
-        else{
+        else {
             cout << "Test case of input 5 failed" << endl;
             cout << "Result of 5 is: " << countAndSay(5) << endl;
         }
         
         if (countAndSay(6) == "312211")
             cout << "Test case of input 6 passed" << endl;
-        else{
+        else {
             cout << "Test case of input 6 failed" << endl;
             cout << "Result of 5 is: " << countAndSay(5) << endl;
         }
@@ -175,7 +240,7 @@ public:
         
         if (searchInsert(data, 0) == 0)
             cout << "Test case of input 0 passed" << endl;
-        else{
+        else {
             cout << "Test case of input 0 failed" << endl;
             cout << "Result of 0 is: " << searchInsert(data,0) << endl;
         }
@@ -184,7 +249,7 @@ public:
         
         if (searchInsert(data, 2) == 1)
             cout << "Test case of input 2 passed" << endl;
-        else{
+        else {
             cout << "Test case of input 2 failed" << endl;
             cout << "Result of 2 is: " << searchInsert(data,2) << endl;
         }
@@ -192,17 +257,17 @@ public:
         data = {1, 3, 5, 6};
         
         if (searchInsert(data, 5) == 2)
-         cout << "Test case of input 5 passed" << endl;
-         else{
-         cout << "Test case of input 5 failed" << endl;
-         cout << "Result of 5 is: " << searchInsert(data,5) << endl;
-         }
+            cout << "Test case of input 5 passed" << endl;
+        else {
+            cout << "Test case of input 5 failed" << endl;
+            cout << "Result of 5 is: " << searchInsert(data,5) << endl;
+        }
         
         data = {1, 3, 5, 6};
         
         if (searchInsert(data, 7) == 4)
             cout << "Test case of input 7 passed" << endl;
-        else{
+        else {
             cout << "Test case of input 7 failed" << endl;
             cout << "Result of 7 is: " << searchInsert(data,7) << endl;
         }
@@ -213,16 +278,16 @@ public:
     // Write a function to find the longest common prefix string amongst an array of strings.
     string longestCommonPrefix(vector<string>& strs) {
         string prefix = "";
-        for(int idx=0; strs.size()>0; prefix+=strs[0][idx], idx++)
-            for(int i=0; i<strs.size(); i++)
-                if(idx >= strs[i].size() ||(i > 0 && strs[i][idx] != strs[i-1][idx]))
+        for (int idx=0; strs.size()>0; prefix+=strs[0][idx], idx++)
+            for (int i=0; i<strs.size(); i++)
+                if (idx >= strs[i].size() ||(i > 0 && strs[i][idx] != strs[i-1][idx]))
                     return prefix;
         return prefix;
     }
     
     void longestCommonPrefixTest () {
         vector<string> strs = {"ab", "abc"};
-        cout << "Result is: " << longestCommonPrefix(strs) << endl;
+        cout << "Result is: " << longestCommonPrefix (strs) << endl;
     }
 };
 
