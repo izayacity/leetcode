@@ -15,6 +15,78 @@ using namespace std;
 
 class Solution {
 public:
+    // 66. Plus One
+    // Given a non-negative integer represented as a non-empty array of digits, plus one to the integer.
+    // You may assume the integer do not contain any leading zero, except the number 0 itself.
+    // The digits are stored such that the most significant digit is at the head of the list.
+    vector<int> plusOne(vector<int>& digits) {
+        int length = (int) digits.size();
+        int i = length - 1;
+
+        while (digits[i] == 9) {
+            digits[i] = 0;
+            i--;
+        }
+
+        if (i == -1) {
+            //digits.insert(digits.begin(), 1);
+            digits.push_back(0);
+            digits[0] = 1;
+        } else
+            digits[i]++;
+        
+        return digits;
+    }
+    
+    void plusOneTest () {
+        // testcase 1
+        vector<int> digits = {5, 4, 0, 9, 9};
+        vector<int> answer = {5, 4, 1, 0, 0};
+        vector<int> result = plusOne(digits);
+        
+        int length = (int) digits.size();
+        int i = 0;
+        for (; i < length; i++) {
+            if (answer[i] != result[i]) {
+                cout << "Test case 1 failed" << endl;
+                break;
+            }
+        }
+        
+        if (i == length) {
+            cout << "Test case 1 passed" << endl;
+        } else {
+            cout << "Result of 1 is:" << endl;
+            print(result);
+        }
+        
+        // testcase 2
+        digits = {9, 9};
+        answer = {1, 0, 0};
+        result = plusOne(digits);
+        length = (int) digits.size();
+        
+        for (i = 0; i < length; i++) {
+            if (answer[i] != result[i]) {
+                cout << "Test case 2 failed" << endl;
+                break;
+            }
+        }
+        
+        if (i == length) {
+            cout << "Test case 2 passed" << endl;
+        } else {
+            cout << "Result of 2 is:" << endl;
+            print(result);
+        }
+    }
+    
+    void print(const vector<int>& elements) {
+        for (vector<int>::const_iterator i = elements.begin(); i != elements.end(); ++i)
+            cout << *i << ' ';
+        cout << endl;
+    }
+    
     // 58. Length of Last Word
     // Given a string s consists of upper/lower-case alphabets and empty space characters ' ', return the length of last word in the string.
     // If the last word does not exist, return 0.
